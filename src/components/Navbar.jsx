@@ -11,7 +11,7 @@ function Navbar() {
       <div className="logo" onClick={handleLogoClick}>Mingle</div>
       <div className="buttons">
         <a href="login" className='btn-login'>Login</a>
-        <a href="singup" className='btn-signup'>Sign up</a>
+        <a href="signup" className='btn-signup'>Sign up</a>
       </div>
     </div>
   )
