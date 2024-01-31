@@ -1,0 +1,64 @@
+:root {
+  --main-color: #AC87C5;
+  --accent-color: #b987db;
+  --text-color: #0b0b0b;
+  --secondary-color: #c9a7df;
+  --bg-color: #F4F4F8;
+}
+
+body {
+  background-color: var(--text-color) !important;
+}
+
+.hero-image {
+  background-image: url('../public/hero-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 50px);
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--bg-color);
+  text-align: center;
+  z-index: 1;
+  margin-top: 70px;
+}
+
+.overlay h1 {
+  font-size: 80px;
+  color: var(--bg-color);
+  font-weight: 600;
+}
+
+.overlay h1 span {
+  color: var(--main-color);
+  font-weight: 800;
+}
+
+.overlay h3 {
+  font-size: 42px;
+}
+
+.overlay button {
+  font-size: 20px;
+  padding: 10px 16px;
+  background: linear-gradient(to right, #a678c5, #c489eb);
+}
+
+.overlay button:hover {
+  background: linear-gradient(to right, #9362b4, #af73d7);
+}
