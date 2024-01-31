@@ -1,23 +1,45 @@
-const User = require('../models/userModel');
+const User = require('../models/userModel')
+const Role = require('../models/roleModel')
+const bcrypt = require('bcryptjs')
 
-exports.createUser = async (req, res) => {
-  try {
-    const { name, surname, age, email, nationality, password } = req.body;
-    const newUser = new User({ name, surname, age, email, nationality, password });
-    const savedUser = await newUser.save();
-    res.json(savedUser);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send('Server Error');
-  }
-};
+class userController {
 
-exports.getAllUsers = async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send('Server Error');
+  async registration (req, res) {
+    try {
+        const {username, name, surname, age, email, nationality, password} = req.body
+        const candidate = await User.findOne({username})
+        if (candidate) {
+          return res.status(400).json({message: "User with this name has already been registered!"})
+        }
+        const hashPassword = bcrypt.hashSync(password, 7);
+        const userRole = await Role.findOne({value: "User"})
+        const user = new User({username, name, surname, age, email, nationality, password: hashPassword, roles: [userRole.value]})
+        await user.save()
+        return res.json({message: "Succesfully registered!"})
+    } catch (e) {
+      console.log(e)
+      res.status(400).json({message: 'Registration error'})
+    }
   }
-};
+
+  async login (req, res) {
+    try {
+
+    } catch (e) {
+      console.log(e)
+      res.status(400).json({message: 'Login error'})
+    }
+  }
+
+  async getUsers (req, res) {
+    try {
+
+      res.json("server works")
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+}
+
+module.exports = new userController()
