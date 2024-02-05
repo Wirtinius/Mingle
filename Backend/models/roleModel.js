@@ -4,7 +4,7 @@ const Role = new mongoose.Schema({
   value: {
     type: String,
     unique: true,
-    default: "User"
+    default: "USER"
   },
 });
 

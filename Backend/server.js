@@ -28,7 +28,7 @@ app.use('/auth', userRouter);
 
 const start = async () => {
   try {
-    await mongoose.connect(`mongodb+srv://leekogreek:Infinitive3@cluster0.dgsqrrf.mongodb.net/`)
+    await mongoose.connect(`mongodb+srv://alenanel2004:Infinitive3@mingle.793mwe4.mongodb.net/`)
     app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
   }
   catch (e) {
