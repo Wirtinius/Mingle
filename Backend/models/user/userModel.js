@@ -34,7 +34,7 @@ const User = new mongoose.Schema({
     type: String,
     ref: 'Role'
   }],
-  date: {
+  dateCreated: {
     type: Date,
     default: Date.now,
   },

@@ -2,7 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const mongodb = require('./configuration/config');
 const app = express();
-const userRouter = require('./routes/userRoutes');
+const userRouter = require('./routes/user/userRoutes');
+const dateRouter = require('./routes/date/dateRoutes');
+const dateVerifRouter = require('./routes/date/dateVerificationRoutes');
 const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3000
 
@@ -24,6 +26,8 @@ const users = [
 ]
  
 app.use('/auth', userRouter);
+app.use('/date', dateRouter);
+app.use('/date-verification', dateVerifRouter);
 
 
 const start = async () => {
