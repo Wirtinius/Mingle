@@ -1,0 +1,92 @@
+.matches {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.matches__cardContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  width: 300px;
+  align-items: center;
+}
+
+.matches__swipe {
+  position: absolute;
+  width: 40vw;
+  height: 60vh;
+}
+
+.matches__card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.matches__card h3 {
+  margin: 0;
+}
+
+.matches__card p {
+  margin: 5px 0;
+}
+
+.w40vw__h60vh {
+  width: 40vw;
+  height: 70vh;
+}
+
+.matches__buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.matches__button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.matches__button--dislike {
+  background-color: #f44336;
+  color: white;
+}
+
+.matches__button--superlike {
+  background-color: #2196f3;
+  color: white;
+}
+
+.matches__button--like {
+  background-color: #4caf50;
+  color: white;
+}
+
+.matches__button--rewind {
+  background-color: #ff9800;
+  color: white;
+}
+
+.matches__button--boost {
+  background-color: #9c27b0;
+  color: white;
+}
