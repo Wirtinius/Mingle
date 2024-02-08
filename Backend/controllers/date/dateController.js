@@ -15,9 +15,21 @@ async createDate(req, res) {
 
 async getAllDates (req, res) {
     try {
-        const dates = await Date.find();
+        const dates = await Date.find({status: "Accepted"});
         res.status(200).json(dates);
     } catch (err) {
+        console.log(err)
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+async getDate (req, res) {
+    try {
+        const { id } = req.params;
+        const date = await Date.findById(id);
+        res.status(200).json(date);
+    } catch (err) {
+        console.log(err)
         res.status(500).json({ error: 'Internal server error' });
     }
 };
@@ -41,6 +53,27 @@ async deleteDate (req, res) {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+
+async acceptDate (req, res) {
+    try {
+        const { id } = req.params;
+        const acceptedDate = await Date.findByIdAndUpdate(id, {"status": "Accepted"});
+        res.status(200).json(acceptedDate);
+    } catch (err) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+async declineDate (req, res) {
+    try {
+        const { id } = req.params;
+        const decinedDate = await Date.findByIdAndUpdate(id, {"status": "Declined"});
+        res.status(200).json(decinedDate);
+    } catch (err) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
 
 }
 module.exports = new dateController()

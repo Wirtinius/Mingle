@@ -5,7 +5,10 @@ const { validateDateCreation } = require('../../middleware/date/dateMiddleware')
 
 router.post('/', validateDateCreation, dateController.createDate);
 router.get('/', dateController.getAllDates);
+router.get('/:id', dateController.getDate);
 router.put('/:id', dateController.updateDate);
 router.delete('/:id', dateController.deleteDate);
+router.put('/accept/:id', dateController.acceptDate);
+router.put('/decline/:id', dateController.declineDate);
 
 module.exports = router;

@@ -16,6 +16,11 @@ const Meeting = new mongoose.Schema({
   dateTime: {
     type: Date
   },
+  status: {
+    type: String,
+    required: true,
+    default: "In Progress"
+  }, 
   dateCreated: {
     type: Date,
     default: Date.now,
