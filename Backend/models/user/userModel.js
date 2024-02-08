@@ -34,7 +34,11 @@ const User = new mongoose.Schema({
     type: String,
     ref: 'Role'
   }],
-  date: {
+  verified: {
+    type: Boolean,
+    default: false,
+  },
+  dateCreated: {
     type: Date,
     default: Date.now,
   },

@@ -1,29 +1,17 @@
+require("dotenv").config();
 const express = require('express');
 const cors = require('cors');
-const mongodb = require('./configuration/config');
 const app = express();
-const userRouter = require('./routes/userRoutes');
+const userRouter = require('./routes/user/userRoutes');
+const dateRouter = require('./routes/date/dateRoutes');
 const mongoose = require('mongoose')
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT 
 
 app.use(cors());
 app.use(express.json());
-
-
-const users = [
-  {
-    "id": 1,
-    "username": "alen",
-    "password": "Infinitive"
-  },
-  {
-    "id": 2,
-    "username": "anelya",
-    "password": "Infinitive3"
-  }
-]
  
 app.use('/auth', userRouter);
+app.use('/date', dateRouter);
 
 
 const start = async () => {
