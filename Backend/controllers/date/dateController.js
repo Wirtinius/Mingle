@@ -8,6 +8,9 @@ async createDate(req, res) {
         const { userId, partnerId, location, dateTime, description } = req.body;
         const newDate = await Date.create({ userId, partnerId, location, dateTime, description });
         res.status(201).json(newDate);
+        if (!validPassword) {
+            return res.status(400).json({message: "Wrong password"})
+        }
     } catch (err) {
         res.status(500).json({ error: 'Internal server error' });
     }

@@ -53,6 +53,7 @@ class userController {
       return res.json({token}) 
 
     } catch (e) {
+      
       console.log(e)
       res.status(400).json({message: 'Login error'})
     }
@@ -63,7 +64,7 @@ class userController {
       const users = await User.find()
       res.json(users)
     } catch (e) {
-      console.log(e)
+      res.status(400).json({message: 'Registration error'})
     }
   }
 
