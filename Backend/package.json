@@ -30,6 +30,7 @@
     "helmet": "^7.1.0",
     "mongoose": "^8.1.1",
     "node-env-file": "^0.1.8",
+    "node-geocoder": "^4.3.0",
     "nodemon": "^3.0.3",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",

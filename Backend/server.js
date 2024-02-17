@@ -5,6 +5,8 @@ const app = express();
 const userRouter = require('./routes/user/userRoutes');
 const dateRouter = require('./routes/date/dateRoutes');
 const messageRouter = require('./routes/chat/messages');
+const mapRouter = require('./routes/map/mapRoutes');
+
 const mongoose = require('mongoose')
 const PORT = process.env.PORT 
 const http = require('http');
@@ -16,6 +18,7 @@ app.use(express.json());
 app.use('/auth', userRouter);
 app.use('/date', dateRouter);
 app.use("/messages", messageRouter);
+app.use("/map", mapRouter);
 
 mongoose
   .connect(process.env.MONGO_URL, {

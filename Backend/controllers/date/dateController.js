@@ -26,6 +26,17 @@ async getAllDates (req, res) {
     }
 };
 
+async getDateByUserId (req, res) {
+    try {
+        const { userId } = req.params;
+        const dates = await Date.find({partnerId: userId});
+        res.status(200).json(dates);
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
 async getDate (req, res) {
     try {
         const { id } = req.params;
