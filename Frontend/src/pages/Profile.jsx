@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Profile.css';
+import getDates from '../handler/dateRequestUtils';
 
 function Profile() {
   const [user, setUser] = useState({
@@ -14,13 +15,40 @@ function Profile() {
     },]
   });
 
+  const dates = getDates();
+  console.log(dates)
+
   const handleAccept = (date) => {
-    // Handle accept logic here
+
+    const acceptDate = async () => {
+      const authToken = JSON.parse(window.localStorage.getItem('authToken'));
+      await fetch(`http://localhost:3000/date//accept/${date._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+        },
+      });
+    };
+
+    acceptDate();
     console.log(`Accepted date request for ${date}`);
   };
 
+
   const handleReject = (date) => {
-    // Handle reject logic here
+    const declineDate = async () => {
+      const authToken = JSON.parse(window.localStorage.getItem('authToken'));
+      await fetch(`http://localhost:3000/date//decline/${date._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+        },
+      });
+    };
+
+    declineDate();
     console.log(`Rejected date request for ${date}`);
   };
 
@@ -38,14 +66,15 @@ function Profile() {
       </div>
       <div className="date-requests">
         <h2>Date Requests</h2>
-        {user.dateRequests.map((request, index) => (
-          <div key={index}>
-            <p>{request.location}</p>
-            <p>{request.date}</p>
-            {request.status === 'In Progress' && (
+        {dates.map((date) => (
+          <div key={date._id}>
+            <p>{date.location}</p>
+            <p>{date.date}</p>
+            <p>{date._id}</p>
+            {date.status === 'In Progress' && (
               <div>
-                <button onClick={() => handleAccept(request.date)}>Accept</button>
-                <button onClick={() => handleReject(request.date)}>Reject</button>
+                <button onClick={() => handleAccept(date)}>Accept</button>
+                <button onClick={() => handleReject(date)}>Reject</button>
               </div>
             )}
           </div>
