@@ -11,8 +11,9 @@ const Meeting = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-  location: {
-    type: String, 
+  locationId: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "Place",
     required: true,
   },
   dateTime: {

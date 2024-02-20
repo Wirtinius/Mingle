@@ -1,17 +1,17 @@
 const Date = require('../../models/date/dateModel');
-
+const createPlace = require('../map/placeController').createPlace;
+const Place = require('../../models/map/placeModel');
 
 class dateController {
 
 async createDate(req, res) {
     try {
-        const { userId, partnerId, location, dateTime, description } = req.body;
-        const newDate = await Date.create({ userId, partnerId, location, dateTime, description });
+        const { name, address, userId, partnerId, dateTime, description } = req.body;
+        const newPlace = await Place.create({ name, address });
+        const newDate = await Date.create({ userId, partnerId, locationId: newPlace.id, dateTime, description });
         res.status(201).json(newDate);
-        if (!validPassword) {
-            return res.status(400).json({message: "Wrong password"})
-        }
     } catch (err) {
+        console.log(err)
         res.status(500).json({ error: 'Internal server error' });
     }
 };

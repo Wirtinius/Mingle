@@ -18,7 +18,7 @@ app.use(express.json());
 app.use('/auth', userRouter);
 app.use('/date', dateRouter);
 app.use("/messages", messageRouter);
-app.use("/map", mapRouter);
+app.use("/place", mapRouter);
 
 mongoose
   .connect(process.env.MONGO_URL, {

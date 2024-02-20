@@ -1,9 +1,11 @@
 const Router = require('express');
 const router = new Router()
-const mapController = require('../../controllers/map/mapController')
+const placeController = require('../../controllers/map/placeController')
 
-router.get('/', mapController.getAllStores);
-router.post('/', mapController.createStore);
+router.get('/', placeController.getAllPlaces);
+router.post('/location', placeController.getPlacesByLocationIds);
+router.get('/:id', placeController.getPlace);
+router.post('/', placeController.createPlace);
 
 
 
