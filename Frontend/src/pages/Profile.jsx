@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Profile.css';
 import getDates from '../handler/dateRequestUtils';
-
+import getLocations from '../handler/locationUtils';
 function Profile() {
   const [user, setUser] = useState({
     name: 'Eren',
@@ -16,7 +16,6 @@ function Profile() {
   });
 
   const dates = getDates();
-  console.log(dates)
 
   const handleAccept = (date) => {
 
@@ -34,7 +33,8 @@ function Profile() {
     acceptDate();
     console.log(`Accepted date request for ${date}`);
   };
-
+  // let locations = getDates().map(({ locationId }) => locationId);
+  console.log(getLocations())
 
   const handleReject = (date) => {
     const declineDate = async () => {
