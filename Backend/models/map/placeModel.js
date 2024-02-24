@@ -18,11 +18,7 @@ const Place = new mongoose.Schema({
     },
     formatedAddress: String,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
-})
+}, {timestamps: true})
 
 Place.pre('save', async function(next) {
     const loc = await geocoder.geocode(this.address);

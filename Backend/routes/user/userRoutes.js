@@ -9,6 +9,7 @@ router.post('/register', [
     check('password', "Password be higher than 4 and less than 10").isLength({min: 4, max: 10})
 ], userController.registration);
 router.post('/login', userController.login);
+router.post('/logout', userController.logout);
 router.get('/users', authMiddleware, userController.getUsers);
 
 

@@ -24,10 +24,6 @@ const Meeting = new mongoose.Schema({
     required: true,
     default: "In Progress"
   }, 
-  dateCreated: {
-    type: Date,
-    default: Date.now,
-  },
-});
+}, {timestamps: true});
 
 module.exports = mongoose.model('Date', Meeting);
