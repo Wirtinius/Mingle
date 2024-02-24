@@ -6,6 +6,7 @@ const { validateDateCreation } = require('../../middleware/date/dateMiddleware')
 router.post('/', validateDateCreation, dateController.createDate);
 router.get('/', dateController.getAllDates);
 router.get('/:id', dateController.getDate);
+router.get('/user/:userId', dateController.getDateByUserId);
 router.put('/:id', dateController.updateDate);
 router.delete('/:id', dateController.deleteDate);
 router.put('/accept/:id', dateController.acceptDate);

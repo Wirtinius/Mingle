@@ -2,15 +2,18 @@ const mongoose = require('mongoose');
 
 const Meeting = new mongoose.Schema({
   userId: {
-    type: Number,
-    required: true
-  },
-  partnerId: {
-    type: Number,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true,
   },
-  location: {
-    type: String, 
+  partnerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  locationId: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "Place",
     required: true,
   },
   dateTime: {

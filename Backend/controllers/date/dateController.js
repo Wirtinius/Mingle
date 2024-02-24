@@ -1,14 +1,17 @@
 const Date = require('../../models/date/dateModel');
-
+const createPlace = require('../map/placeController').createPlace;
+const Place = require('../../models/map/placeModel');
 
 class dateController {
 
 async createDate(req, res) {
     try {
-        const { userId, partnerId, location, dateTime, description } = req.body;
-        const newDate = await Date.create({ userId, partnerId, location, dateTime, description });
+        const { name, address, userId, partnerId, dateTime, description } = req.body;
+        const newPlace = await Place.create({ name, address });
+        const newDate = await Date.create({ userId, partnerId, locationId: newPlace.id, dateTime, description });
         res.status(201).json(newDate);
     } catch (err) {
+        console.log(err)
         res.status(500).json({ error: 'Internal server error' });
     }
 };
@@ -16,6 +19,17 @@ async createDate(req, res) {
 async getAllDates (req, res) {
     try {
         const dates = await Date.find({status: "Accepted"});
+        res.status(200).json(dates);
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+async getDateByUserId (req, res) {
+    try {
+        const { userId } = req.params;
+        const dates = await Date.find({partnerId: userId});
         res.status(200).json(dates);
     } catch (err) {
         console.log(err)
