@@ -22,11 +22,16 @@ class userController {
           return req.status(400).json({message: "Error while registration", errors})
         }
 
-        const {username, name, surname, age, email, nationality, password} = req.body
+        const {username, name, surname, age, email, nationality, password, confirmPassword} = req.body
+        if (confirmPassword != password) {
+          return res.status(400).json({error: "Passwords don't match"})
+        }
+
         const candidate = await User.findOne({username})
         if (candidate) {
           return res.status(400).json({message: "User with this name has already been registered!"})
         }
+
         const hashPassword = bcrypt.hashSync(password, 7);
         const userRole = await Role.findOne({value: "USER"})
         const user = new User({username, name, surname, age, email, nationality, password: hashPassword, roles: [userRole.value]})
@@ -53,7 +58,17 @@ class userController {
       return res.json({token}) 
 
     } catch (e) {
+      console.log(e)
+      res.status(400).json({message: 'Login error'})
+    }
+  }
+
+  async logout (req, res) {
+    try {
+      res.cookie("jwt", "", {maxAge: 0});
+      res.status(200).json({message: "Logged out successfully!"})
       
+    } catch (e) {
       console.log(e)
       res.status(400).json({message: 'Login error'})
     }

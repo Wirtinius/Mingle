@@ -1,39 +1,58 @@
-const Messages = require("../../models/chat/messageModel");
+const Message = require("../../models/chat/messageModel");
+const Conversation = require("../../models/chat/conversationModel");
 
-module.exports.getMessages = async (req, res, next) => {
+module.exports.getMessages = async (req, res) => {
   try {
-    const { from, to } = req.body;
+    const { id: userToChatId } = req.params
+    const senderId = req.user.id;
 
-    const messages = await Messages.find({
-      users: {
-        $all: [from, to],
-      },
-    }).sort({ updatedAt: 1 });
+    let conversation = await Conversation.findOne({
+      participants: { $all: [senderId, userToChatId] },
+    }).populate("messages");
 
-    const projectedMessages = messages.map((msg) => {
-      return {
-        fromSelf: msg.sender.toString() === from,
-        message: msg.message.text,
-      };
-    });
-    res.json(projectedMessages);
-  } catch (ex) {
-    next(ex);
+    if (!conversation) return res.status(200).json([]);
+
+    const messages = conversation.messages;
+
+    res.status(200).json(messages);
+    } catch (err) {
+      console.log(err)
+      res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-module.exports.addMessage = async (req, res, next) => {
+
+module.exports.sendMessage = async (req, res) => {
   try {
-    const { from, to, message } = req.body;
-    const data = await Messages.create({
-      message: { text: message },
-      users: [from, to],
-      sender: from,
+    const { message } = req.body;
+    const { id: receiverId } = req.params
+    const senderId = req.user.id;
+
+    let conversation = await Conversation.findOne({
+      participants: { $all: [senderId, receiverId] },
     });
 
-    if (data) return res.json({ msg: "Message added successfully." });
-    else return res.json({ msg: "Failed to add message to the database" });
-  } catch (ex) {
-    next(ex);
+    if (!conversation) {
+      conversation = await Conversation.create({
+        participants: [senderId, receiverId],
+      });
+    }
+
+    const newMessage = new Message({
+      senderId,
+      receiverId,
+      message
+    });
+
+    if (newMessage) {
+      conversation.messages.push(newMessage._id);
+    }
+
+    await Promise.all([conversation.save(), newMessage.save()]);
+
+    res.status(201).json(newMessage);
+    } catch (err) {
+      console.log(err)
+      res.status(500).json({ error: 'Internal server error' });
   }
 };

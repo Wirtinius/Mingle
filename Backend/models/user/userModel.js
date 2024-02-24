@@ -17,6 +17,11 @@ const User = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  gender: {
+    type: String,
+    required: true,
+    enum: ["male", "female"]
+  },
   email: {
     type: String,
     required: true,
@@ -30,6 +35,10 @@ const User = new mongoose.Schema({
     type: String,
     required: true,
   },
+  profilePic: {
+    type: String,
+    default: ""
+  },
   roles: [{
     type: String,
     ref: 'Role'
@@ -38,10 +47,6 @@ const User = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  dateCreated: {
-    type: Date,
-    default: Date.now,
-  },
-});
+}, {timestamps: true});
 
 module.exports = mongoose.model('User', User);
