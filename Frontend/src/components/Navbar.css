@@ -7,7 +7,7 @@
 }
 
 .navbar {
-  height: 50px;
+  height: 70px;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -21,7 +21,7 @@
 }
 
 .logo {
-  font-size: 26px;
+  width: 60px;
   color: var(--main-color);
   cursor: default;
   font-weight: 700;
