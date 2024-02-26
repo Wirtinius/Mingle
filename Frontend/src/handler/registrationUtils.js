@@ -10,7 +10,7 @@ const registerUser = async (username, name, surname, email, age, nationality, pa
     });
   
     try {
-      const response = await fetch('http://localhost:3000/auth/register', {
+      const response = await fetch('http://localhost:4000/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -7,7 +7,7 @@ const getLocations = async () => {
 
     try {
         const authToken = JSON.parse(window.localStorage.getItem('authToken'));
-        const response = await fetch(`http://localhost:3000/place/location`, {
+        const response = await fetch(`http://localhost:4000/place/location`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

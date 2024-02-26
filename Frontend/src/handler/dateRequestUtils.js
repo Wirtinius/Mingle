@@ -19,7 +19,7 @@
         try {
           const authToken = JSON.parse(window.localStorage.getItem('authToken'));
           const user = jwtDecode(authToken);
-          const response = await fetch(`http://localhost:3000/date/user/${user.id}`, {
+          const response = await fetch(`http://localhost:4000/date/user/${user.id}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',

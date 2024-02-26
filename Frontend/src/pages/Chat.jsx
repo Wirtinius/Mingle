@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
 import MessageContainer from "../components/messages/MessageContainer";
-
+import ErrorBoundary from "../pages/ErrorBoundary"
 const Chat = () => {
   return (
     <div className="p-4 h-screen flex items-center justify-center">
@@ -10,7 +10,10 @@ const Chat = () => {
       backdrop-filter backdrop-blur-lg bg-opacity-0"
       >
         <Sidebar />
-        <MessageContainer />
+        <ErrorBoundary>
+          <MessageContainer />
+        </ErrorBoundary>
+
       </div>
     </div>
   );

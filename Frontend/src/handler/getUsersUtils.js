@@ -9,7 +9,7 @@ const getUsers = () => {
       try {
         const authToken = JSON.parse(window.localStorage.getItem('authToken'));
         const user = jwtDecode(authToken);
-        const response = await fetch('http://localhost:3000/auth/users', {
+        const response = await fetch('http://localhost:4000/auth/users', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

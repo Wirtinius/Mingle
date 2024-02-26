@@ -7,7 +7,7 @@ const createDate = async (userId, partnerId, location, dateTime) => {
     });
   
     try {
-      const response = await fetch('http://localhost:3000/date', {
+      const response = await fetch('http://localhost:4000/date', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

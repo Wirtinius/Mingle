@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
-import { jwtDecode } from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 
 function getUser() {
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState('');
 
   useEffect(() => {
-    let authToken = JSON.parse(window.localStorage.getItem('authToken'))
-    let user = jwtDecode(authToken);
-    if (user) {
-      setUser(user);
+    const authToken = JSON.parse(window.localStorage.getItem('authToken'));
+    if (authToken) {
+      const decodedUser = jwtDecode(authToken);
+      setUser(decodedUser);
     }
   }, []);
 
-  console.log(user);
+  return user;
 }
 
 export default getUser;

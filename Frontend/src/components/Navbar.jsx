@@ -21,7 +21,7 @@ function Navbar() {
           </a>
         </div>
       </div>
-      <div className="navbar logged">
+      {/* <div className="navbar logged">
         <div className="logo" onClick={handleLogoClick}>
           <img src="logo.png" alt="Logo" />
         </div>
@@ -34,7 +34,7 @@ function Navbar() {
             <a href="#">Log out</a>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
