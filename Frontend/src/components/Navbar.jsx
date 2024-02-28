@@ -10,7 +10,7 @@ function Navbar() {
     <>
       <div className="navbar">
         <div className="logo" onClick={handleLogoClick}>
-          <img src="logo.png" alt="Logo" />
+          <img src="logo2.png" alt="Logo" />
         </div>
         <div className="buttons">
           <a href="login" className="btn-login">

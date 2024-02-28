@@ -6,10 +6,6 @@
   --bg-color: #F4F4F8;
 }
 
-body {
-  background-color: var(--text-color) !important;
-}
-
 .hero-image {
   background-image: url('../public/hero-image.jpg');
   background-size: cover;
@@ -27,7 +23,7 @@ body {
   left: 0;
   width: 100%;
   height: calc(100vh - 50px);
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,11 +50,12 @@ body {
 }
 
 .overlay button {
-  font-size: 20px;
-  padding: 10px 16px;
-  background: linear-gradient(to right, #a678c5, #c489eb);
+  color: var(--bg-color);
+  font-size: 22px;
+  padding: 8px 16px;
+  background: linear-gradient(to top, #ab6ad6, #ce94f4);
 }
 
 .overlay button:hover {
-  background: linear-gradient(to right, #9362b4, #af73d7);
+  background: linear-gradient(to bottom, #ab6ad6, #ce94f4);
 }
