@@ -5,11 +5,10 @@ const userRouter = require('./routes/user/userRoutes');
 const dateRouter = require('./routes/date/dateRoutes');
 const messageRouter = require('./routes/chat/messages');
 const mapRouter = require('./routes/map/mapRoutes');
-const { app, server } = require('./socket/socket.js');
 
 const mongoose = require('mongoose')
 const PORT = process.env.PORT 
-const http = require('http');
+var app = express();
 
 app.use(cors());
 app.use(express.json());
@@ -32,6 +31,8 @@ mongoose
   });
 
 
-  server.listen(PORT, () => {
+  app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
   })
+
+module.exports.app = app;
