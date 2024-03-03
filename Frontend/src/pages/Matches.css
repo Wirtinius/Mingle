@@ -1,3 +1,15 @@
+:root {
+  --main-color: #AC87C5;
+  --accent-color: #b987db;
+  --text-color: #0b0b0b;
+  --secondary-color: #c9a7df;
+  --bg-color: #F4F4F8;
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
 .matches {
   display: flex;
   flex-direction: column;
@@ -20,7 +32,7 @@
   height: 60vh;
 }
 
-.matches__card {
+/* .matches__card {
   position: relative;
   width: 100%;
   height: 100%;
@@ -43,6 +55,74 @@
 
 .matches__card p {
   margin: 5px 0;
+} */
+
+.matches__card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+}
+
+.matches__cardImage {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+}
+
+.matches__userInfo {
+  flex: 2;
+  padding: 20px;
+}
+
+.matches__userInfo h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.matches__userInfo p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.matches__card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+}
+
+.matches__cardImage {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+}
+
+.matches__userInfo {
+  flex: 2;
+  padding: 20px;
+}
+
+.matches__userInfo h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.matches__userInfo p {
+  margin: 5px 0;
+  font-size: 16px;
 }
 
 .w40vw__h60vh {
@@ -58,35 +138,85 @@
 .matches__button {
   margin: 0 10px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
-  border-radius: 20px;
+  border-radius: 55px;
   border: none;
   outline: none;
   cursor: pointer;
+  min-width: 120px;
 }
 
-.matches__button--dislike {
+.matches__button--requestDate {
+  background: linear-gradient(to top, #ab6ad6, #ce94f4);
+  color: white;
+}
+
+.matches__button--requestDate:hover {
+  background: linear-gradient(to bottom, #ab6ad6, #ce94f4);
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+/* Modal content */
+.modal__content {
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 400px;
+}
+
+/* Close button */
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+}
+
+/* Form styling */
+.modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal label {
+  margin-bottom: 10px;
+}
+
+.modal input,
+.modal textarea {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.modal button {
+  padding: 10px 20px;
   background-color: #f44336;
   color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
 }
 
-.matches__button--superlike {
-  background-color: #2196f3;
-  color: white;
-}
-
-.matches__button--like {
-  background-color: #4caf50;
-  color: white;
-}
-
-.matches__button--rewind {
-  background-color: #ff9800;
-  color: white;
-}
-
-.matches__button--boost {
-  background-color: #9c27b0;
-  color: white;
+.modal button:hover {
+  background-color: #d32f2f;
 }

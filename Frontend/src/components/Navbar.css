@@ -7,21 +7,20 @@
 }
 
 .navbar {
-  height: 50px;
-  max-width: 1200px;
+  height: 70px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: var(--text-color);
-  color: var(--bg-color);
+  color: var(--text-color);
   font-size: 20px;
-  z-index: 4;
+  z-index: 1;
+  background-color: transparent;
 }
 
 .logo {
-  font-size: 26px;
+  width: 60px;
   color: var(--main-color);
   cursor: default;
   font-weight: 700;
@@ -30,7 +29,7 @@
 .buttons a {
   margin-left: 10px;
   padding: 10px;
-  color: var(--bg-color);
+  color: var(--text-color);
   text-decoration: none;
 }
 
@@ -39,16 +38,24 @@
 }
 
 .buttons .btn-login {
-  padding: 5px 8px;
+  padding: 5px 16px;
   border: 2px solid var(--main-color);
-  border-radius: 10px;
+  border-radius: 35px;
 }
 
 .buttons .btn-login:hover {
-  border: 2px solid var(--text-color);
-  transition: .3s;
+  border: 2px solid transparent;
+  transition: .2s;
 }
 
 .buttons .btn-login:not(:hover) {
-  transition: .4s;
+  transition: .2s;
+}
+
+.buttons .btn-signup:hover {
+  transition: .2s;
+}
+
+.buttons .btn-signup:not(:hover) {
+  transition: .2s;
 }
