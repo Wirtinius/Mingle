@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Signup from "./pages/authorization/signup";
 import Login from "./pages/authorization/login";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/map" element={<Map />} />
         <Route path="/chat" element={<Chat />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

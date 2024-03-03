@@ -4,17 +4,15 @@ import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 
 function Home() {
-  //   const [user, setUser] = useState('')
+  const [user, setUser] = useState("");
 
-  //   useEffect(() => {
-  //     let authToken = JSON.parse(window.localStorage.getItem('authToken'))
-  //     let user = jwtDecode(authToken);
-  //     if (user) {
-  //         setUser(user);
-  //     }
+  // useEffect(() => {
+  //   let authToken = window.localStorage.getItem("authToken");
+  //   let user = jwtDecode(authToken);
+  //   if (user) {
+  //     setUser(user);
+  //   }
   // }, []);
-
-  //   console.log(user)
 
   const handleButtonClick = () => {
     window.location.href = "matches";

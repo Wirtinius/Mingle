@@ -54,7 +54,7 @@ function Profile() {
 
   return (
     <div className="profile">
-      <h1>Profile Page</h1>
+      <h1>Profile</h1>
       <div>
         <strong>Name:</strong> {user.name} {user.surname}
       </div>

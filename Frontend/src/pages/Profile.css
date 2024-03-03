@@ -1,13 +1,14 @@
 :root {
-  --main-color: #AC87C5;
+  --main-color: #ac87c5;
   --accent-color: #b987db;
   --text-color: #0b0b0b;
   --secondary-color: #c9a7df;
-  --bg-color: #F4F4F8;
+  --bg-color: #f4f4f8;
 }
 
 .profile {
   max-width: 600px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 20px;
   background-color: var(--bg-color);
@@ -37,6 +38,14 @@ input {
   background-color: var(--secondary-color);
   padding: 15px;
   border-radius: 8px;
+}
+
+.profile h1 {
+  margin-bottom: 10px;
+  font-size: 42px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--text-color);
 }
 
 .date-requests h2 {
@@ -69,8 +78,8 @@ input {
 }
 
 .date-requests button:nth-child(1):hover {
-    background-color: var(--main-color);
-  }
+  background-color: var(--main-color);
+}
 
 .date-requests button:nth-child(2) {
   background-color: var(--accent-color);
@@ -79,5 +88,5 @@ input {
 }
 
 .date-requests button:nth-child(2):hover {
-    background-color: var(--main-color);
-  }
+  background-color: var(--main-color);
+}
